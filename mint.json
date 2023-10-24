@@ -20,13 +20,13 @@
   },
   "topbarLinks": [
     {
-      "name": "Support",
-      "url": "mailto:admin@sheetah.io"
+      "name": "Book a Demo",
+      "url": "https://calendly.com/sheetah/demo"
     }
   ],
   "topbarCtaButton": {
     "name": "Get Early Access",
-    "url": "https://app.sheetah.io"
+    "url": "https://sheetah.io"
   },
   "tabs": [
     {
@@ -43,7 +43,7 @@
     {
       "name": "Integrations",
       "icon": "link",
-      "url": "/integrations"
+      "url": "/integrations/zapier/intro"
     },
     {
       "name": "Blog",
@@ -117,7 +117,7 @@
       "pages": ["api-reference/introduction"]
     },
     {
-      "group": "API Request Guide",
+      "group": "API Request Schema Guide",
       "pages": [
         "api-reference/options/tables",
         "api-reference/options/variables",
