@@ -1,0 +1,64 @@
+---
+title: Create a Template with Sheetah
+description: Step by step guide on creating a template with Sheetah.
+---
+
+## Creating a Template
+
+### 1. Navigate to the Sheetah Dashboard
+
+- URL: [https://app.sheetah.io](https://app.sheetah.io)
+
+### 2. Visit "My Templates" section
+
+- URL: [https://app.sheetah.io/templates/my](https://app.sheetah.io/templates/my)
+- Click the "+ New Template" button.
+
+### 3. Upload Your Excel File
+
+- Use the drag & drop feature to upload your Excel file.
+- Sheetah will create a template based on your Excel file's design (1 Header row and 1 Data row).
+
+Add additional elements:
+
+- You can include a logo at the top of your template.
+- You can embed template variables such as **"Report for \{email\}"** in Cell B2 or **"Create Date : \{createDate\}"** in Cell B3.
+- You can customize the font, alignment, background color etc.
+
+<Info>
+  **TODO:** A screenshot will be embedded here to visually display how a sample
+  excel file should look like.
+</Info>
+
+### 4. Customize Template Settings
+
+After successfully uploading your excel file, you'll be directed to the template settings page.
+
+- **Define Template Name**: Set a descriptive name and description for easier identification.
+- **Define Table ID**: This should be in camel case without any whitespace. It must be unique.
+- **Define Ref**: This indicates the top-left cell of a table (e.g., "B4").
+- **Select the Sheet**: Choose the sheet you would like to insert data into (e.g., "Sheet1").
+- **Set Table Theme**: Choose the design for the table (e.g., "TableStyleLight6").
+
+### 5. Set Table Options
+
+For table options, you can:
+
+- **Show Header Row**: This displays table header or column names on the top cell.
+- **Show Footer Row**: This displays values calculated based on a formula (e.g., SUM, AVERAGE).
+- **Bold First Column**: Bold first column of a table.
+- **Bold Last Column**: Bold last column of a table.
+- **Show Row Stripes**: Displays stripes on rows based on the table theme.
+- **Show Column Stripes**: Displays stripes on columns based on the table theme.
+
+Finally, click on the "Publish Template" button to create your template.
+
+After creating your template, use the Test API function to ensure it's functioning correctly. Refer to the guide below for instructions.
+
+## Next Step
+
+<Card
+  title="Test your template"
+  icon="circle-check"
+  href="/guides/test-template"
+/>
