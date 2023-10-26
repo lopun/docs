@@ -1,86 +1,106 @@
 ---
-title: 'Quickstart'
-description: 'Start building awesome documentation in under 5 minutes'
+title: Connect API in Your Project
+description: A comprehensive step-by-step guide on how to connect the Sheetah API to your project.
 ---
 
-## Setup your development
+Sheetah provides developers with a ready-to-use test template to connect the API to their code. This guide walks you through this process.
 
-Learn how to update your docs locally and and deploy them to the public.
+After thoroughly testing your template, we suggest copying the auto-generated code snippet from the "Test a Template" documentation under 'Step 3: Ready-to-Use Code Snippet'. At the moment, we only support Node.js, but soon, we will support Python, Java, Kotlin, and Go languages.
 
-### Edit and preview
+![Step 03 test a template](screenshot.jpg)
 
-<AccordionGroup>
-  <Accordion icon="github" title="Clone your docs locally">
-    During the onboarding process, we created a repository on your Github with
-    your docs content. You can find this repository on our
-    [dashboard](https://dashboard.mintlify.com). To clone the repository
-    locally, follow these
-    [instructions](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository)
-    in your terminal.
-  </Accordion>
-  <Accordion icon="rectangle-terminal" title="Preview changes">
-    Previewing helps you make sure your changes look as intended. We built a
-    command line interface to render these changes locally. 1. Install the
-    [Mintlify CLI](https://www.npmjs.com/package/mintlify) to preview the
-    documentation changes locally with this command: ``` npm i -g mintlify ```
-    2. Run the following command at the root of your documentation (where
-    `mint.json` is): ``` mintlify dev ```
-  </Accordion>
-</AccordionGroup>
+Here are the steps you should follow:
 
-### Deploy your changes
+## 1. Install SDK
 
-<AccordionGroup>
+First, you need to install our SDK. Run the following command in your terminal:
 
-<Accordion icon="message-bot" title="Install our Github app">
-  Our Github app automatically deploys your changes to your docs site, so you
-  don't need to manage deployments yourself. You can find the link to install on
-  your [dashboard](https://dashboard.mintlify.com). Once the bot has been
-  successfully installed, there should be a check mark next to the commit hash
-  of the repo.
-</Accordion>
-<Accordion icon="rocket" title="Push your changes">
-  [Commit and push your changes to
-  Git](https://docs.github.com/en/get-started/using-git/pushing-commits-to-a-remote-repository#about-git-push)
-  for your changes to update in your docs site. If you push and don't see that
-  the Github app successfully deployed your changes, you can also manually
-  update your docs through our [dashboard](https://dashboard.mintlify.com).
-</Accordion>
+<CodeGroup>
+```bash Node.js
+npm install --save sheetah
+```
+</CodeGroup>
 
-</AccordionGroup>
+## Step 2. Import Sheetah SDK and initialize API_KEY
 
-## Update your docs
+After installing the SDK, import it into your project and initialize your API Key.
 
-Add content directly in your files with MDX syntax and React components. You can use any of our components, or even build your own.
+<CodeGroup>
+```javascript Node.js
+import Sheetah from 'sheetah'
+const sheetah = new Sheetah('YOUR_API_KEY')
+```
+</CodeGroup>
 
-<CardGroup>
+To create and view your API Key, visit your [developer settings page](https://app.sheetah.io/developer-settings/api-keys).
 
-<Card title="Style Your Docs" icon="paintbrush" href="/settings/global">
-  Add flair to your docs with personalized branding.
-</Card>
+![API KEY page](apikey_screenshot.jpg)
 
-<Card
-  title="Add API Endpoints"
-  icon="square-code"
-  href="/api-playground/configuration"
->
-  Implement your OpenAPI spec and enable API user interaction.
-</Card>
+## Step 3. Connect API
 
-<Card
-  title="Integrate Analytics"
-  icon="chart-mixed"
-  href="/analytics/supported-integrations"
->
-  Draw insights from user interactions with your documentation.
-</Card>
+Lastly, you need to connect the API by pasting the code snippet provided at 'Step 3: Ready-to-Use Code Snippet'.
 
-<Card
-  title="Host on a Custom Domain"
-  icon="browser"
-  href="/settings/custom-domain/subdomain"
->
-  Keep your docs on your own website's subdomain.
-</Card>
+<CodeGroup>
+```javascript Node.js
+// $ npm install sheetah
+// https://www.npmjs.com/package/sheetah
+const sheetah = new Sheetah('YOUR_API_KEY')
 
+const request = sheetah
+.setTemplateId(64)
+.setTables([{
+id: "CRMTable",
+rows: [
+["ABC Company", "John Smith", 5000],
+["XYZ Company", "Kevin Choi", 3000]
+],
+columns: [{
+name: "COMPANY NAME",
+filter: false,
+totalFormula: "none"
+}, {
+name: "CONTACT NAME",
+filter: false,
+totalFormula: "none"
+}, {
+name: "PROJECTED SALES",
+filter: true,
+totalFormula: "average"
+}]
+}])
+.setVariables({
+partner_email: "partner@example.com"
+})
+.setSheets(undefined)
+.setOptions({
+filename: "crm-template",
+password: "123456",
+expireInDays: 7
+})
+
+const {
+message,
+fileUrl
+} = await request.exportExcelToFileUrl()
+
+if (message === 'success') {
+return fileUrl
+} else {
+console.log(`Error Message: ${message}`)
+}
+
+```
+</CodeGroup>
+
+With these steps, you're done! You've now connected your project with the Sheetah API!
+
+For more details on the SDK, please visit: [https://npmjs.com/package/sheetah](https://npmjs.com/package/sheetah).
+
+For more advanced use of our product, see the other documents:
+
+<CardGroup cols={3}>
+  <Card title="API Reference" icon="book" href="/api-reference/introduction" />
+  <Card title="Integrations" icon="plug" href="/integrations/zapier/intro" />
+  <Card title="Use-cases" icon="lightbulb" href="/use-cases/ecommerce-admin/monthly-revenue-report" />
 </CardGroup>
+```
